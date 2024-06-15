@@ -121,6 +121,10 @@ a {
 	text-decoration: none;
 	color: inherit;
 }
+
+p {
+	line-height: 26px;
+}
 /* Basic Styles END */
 
 /* Header START */
@@ -307,3 +311,108 @@ a {
 }
 
 /* Header END */
+
+/* Hero Section */
+
+.hero {
+	margin-top: 40px;
+}
+
+.hero-wrapper {
+	display: flex;
+	gap: 30px;
+}
+
+.hero-content,
+.hero-collage {
+	flex: 1;
+}
+
+.hero-content h2 {
+	font-size: 40px;
+	font-weight: 600;
+	line-height: 33px;
+}
+
+.hero-content p {
+	margin-top: 25px;
+	text-align: justify;
+}
+
+.hero-buttons {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	margin-top: 40px;
+}
+
+.hero-buttons button {
+	display: flex;
+	align-items: center;
+	border: none;
+	background: none;
+}
+
+.hero-link {
+	padding: 10px 15px;
+	background-color: var(--color-green);
+	font-family: var(--headings-font);
+	font-weight: 600;
+	border: 2px solid var(--color-green);
+	border-radius: 5px;
+	color: #ffffff;
+}
+
+.hero-link:hover {
+	background: none;
+	color: var(--color-green);
+}
+
+.hero-buttons button {
+	font-family: var(--headings-font);
+	font-weight: 600;
+	font-size: 18px;
+}
+
+.hero-buttons button:hover {
+	color: #e5848d;
+	cursor: pointer;
+}
+
+.hero-buttons button svg {
+	margin-right: 10px;
+}
+
+.hero-collage {
+	display: flex;
+}
+
+.hero-collage img {
+	height: auto;
+	object-fit: contain;
+	object-position: top;
+}
+
+/* Hero Section END */
+
+/* Media Queries */
+
+@media (width < 1061px) {
+	.hero-wrapper {
+		flex-direction: column;
+	}
+	.main-menu-list {
+		justify-content: center;
+	}
+	.hero-content {
+		text-align: center;
+	}
+	.hero-buttons {
+		justify-content: center;
+	}
+	.hero-collage {
+		justify-content: center;
+	}
+}
+
+/* Media Queries END */
