@@ -395,6 +395,47 @@ p {
 
 /* Hero Section END */
 
+/* Statistics Section START */
+
+.statistics {
+	margin-top: 50px;
+}
+
+.statistics-list {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 20px;
+}
+
+.statistics-item {
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+	max-width: 324px;
+	font-family: var(--headings-font);
+	font-weight: 600;
+	background-color: var(--color-grey);
+	padding: 10px 20px;
+	border-radius: 8px;
+}
+
+.statistics-item img {
+	margin-right: 10px;
+}
+
+.statistics-count {
+	font-size: 22px;
+	margin-right: 10px;
+}
+
+.statistics-text {
+	font-size: 18px;
+}
+
+/* Statistics Section END */
+
 /* Media Queries */
 
 @media (width < 1061px) {
