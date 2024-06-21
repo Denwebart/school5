@@ -506,12 +506,14 @@ p {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .latest-news-title-wrapper h2 {
 	font-family: var(--headings-font);
 	font-weight: 600;
 	font-size: 40px;
+	white-space: nowrap;
 }
 
 .latest-news-title-wrapper a {
@@ -521,6 +523,7 @@ p {
 	background-color: #f9e498;
 	padding: 7px 12px;
 	border-radius: 8px;
+	white-space: nowrap;
 }
 
 @media (any-hover: hover) {
@@ -599,6 +602,10 @@ p {
 @media (width < 767px) {
 	.advantages-list {
 		grid-template-columns: 1fr;
+	}
+	.latest-news-title-wrapper {
+		justify-content: center;
+		gap: 20px;
 	}
 	.latest-news-wrapper {
 		grid-template-columns: repeat(1, 1fr);
