@@ -510,7 +510,6 @@ p {
 }
 
 .latest-news-title-wrapper h2 {
-	font-family: var(--headings-font);
 	font-weight: 600;
 	font-size: 40px;
 	white-space: nowrap;
@@ -532,7 +531,7 @@ p {
 	}
 }
 
-.latest-news-wrapper {
+.latest-news-list {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 20px;
@@ -568,6 +567,72 @@ p {
 
 /* Latest News Section END */
 
+/* Posters Preview Section START */
+
+.posters-preview {
+	margin-top: 50px;
+}
+
+.posters-preview-title-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.posters-preview-title-wrapper h2 {
+	font-weight: 600;
+	font-size: 40px;
+	white-space: nowrap;
+}
+
+.posters-preview-title-wrapper a {
+	font-family: var(--headings-font);
+	font-weight: 600;
+	border: 2px solid #f9e498;
+	background-color: #f9e498;
+	padding: 7px 12px;
+	border-radius: 8px;
+	white-space: nowrap;
+}
+
+@media (any-hover: hover) {
+	.posters-preview-title-wrapper a:hover {
+		background-color: #ffffff;
+	}
+}
+
+.posters-preview-list {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.poster-preview-item {
+	display: flex;
+	flex-direction: column;
+	max-width: 342px;
+}
+
+.poster-preview-item img {
+	border-radius: 8px;
+}
+
+.poster-preview-item a h3 {
+	font-size: 22px;
+	font-weight: 600;
+	margin-top: 15px;
+}
+
+@media (any-hover: hover) {
+	.poster-preview-item a:hover {
+		color: var(--color-green);
+	}
+}
+
+/* Posters Preview Section END */
+
 /* Media Queries */
 
 @media (width < 1061px) {
@@ -589,12 +654,20 @@ p {
 	.advantages-list {
 		grid-template-columns: repeat(2, 1fr);
 	}
-	.latest-news-wrapper {
+	.latest-news-list {
+		grid-template-columns: repeat(2, 1fr);
+		justify-items: center;
+		align-items: center;
+	}
+	.posters-preview-list {
 		grid-template-columns: repeat(2, 1fr);
 		justify-items: center;
 		align-items: center;
 	}
 	.latest-news-item {
+		align-items: center;
+	}
+	.poster-preview-item {
 		align-items: center;
 	}
 }
@@ -603,18 +676,26 @@ p {
 	.advantages-list {
 		grid-template-columns: 1fr;
 	}
+	.advantages-item:first-child {
+		grid-column: 1 / -1;
+	}
 	.latest-news-title-wrapper {
 		justify-content: center;
 		gap: 20px;
 	}
-	.latest-news-wrapper {
+	.latest-news-list {
 		grid-template-columns: repeat(1, 1fr);
 		justify-items: center;
 		align-items: center;
 	}
-
-	.advantages-item:first-child {
-		grid-column: 1 / -1;
+	.posters-preview-title-wrapper {
+		justify-content: center;
+		gap: 20px;
+	}
+	.posters-preview-list {
+		grid-template-columns: repeat(1, 1fr);
+		justify-items: center;
+		align-items: center;
 	}
 }
 
