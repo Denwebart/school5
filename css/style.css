@@ -633,6 +633,26 @@ p {
 
 /* Posters Preview Section END */
 
+/* Content Section START */
+
+.content {
+	margin-top: 50px;
+}
+
+.content-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	max-width: 900px;
+}
+
+.content-wrapper h1 {
+	font-size: 40px;
+	font-weight: 600;
+}
+
+/* Content Section END */
+
 /* Media Queries */
 
 @media (max-width: 1061px) {
