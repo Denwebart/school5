@@ -635,7 +635,7 @@ p {
 
 /* Media Queries */
 
-@media (width < 1061px) {
+@media (max-width: 1061px) {
 	.hero-wrapper {
 		flex-direction: column;
 	}
@@ -672,7 +672,7 @@ p {
 	}
 }
 
-@media (width < 767px) {
+@media (max-width: 767px) {
 	.advantages-list {
 		grid-template-columns: 1fr;
 	}
