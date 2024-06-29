@@ -680,7 +680,7 @@ p {
 
 .footer-top {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 }
 
 .footer-logo {
@@ -690,7 +690,7 @@ p {
 	gap: 10px;
 }
 
-.footer-school-name {
+.footer-school-name-wrapper {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
@@ -698,11 +698,16 @@ p {
 
 .footer-school-name {
 	font-size: 22px;
-	text-wrap: nowrap;
 }
 
 .footer-school-from {
 	font-size: 20px;
+}
+
+.footer-links-wrapper {
+	display: flex;
+	justify-content: space-around;
+	gap: 30px;
 }
 
 .footer-links {
@@ -770,21 +775,21 @@ p {
 		align-items: center;
 	}
 	.footer-top {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 1fr;
 		justify-items: center;
 		justify-content: center;
 		row-gap: 30px;
 	}
 	.footer-logo {
 		align-items: center;
-		order: -1;
 	}
-	.footer-school-name {
-		align-items: center;
+	.footer-school-name-wrapper {
+		text-align: center;
 	}
-	.footer-address {
+	.footer-links-wrapper {
+		justify-content: center;
 		align-self: center;
-		order: -1;
+		justify-self: center;
 	}
 	.footer-address li {
 		align-self: center;
