@@ -27,57 +27,65 @@ video {
 
 /* Fonts START */
 @font-face {
-	font-family: "Nunito Sans";
-	src: url("../fonts/Nunito/Nunito-Regular.woff2") format("woff2");
+	font-family: 'Nunito Sans';
+	src: url('../fonts/Nunito/Nunito-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Nunito Sans";
+	font-family: 'Nunito Sans';
 	font-weight: 600;
-	src: url("../fonts/Nunito/Nunito-SemiBold.woff2") format("woff2");
+	src: url('../fonts/Nunito/Nunito-SemiBold.woff2') format('woff2');
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Open Sans";
-	font-weight: 400;
-	src: url("../fonts/Open_Sans/OpenSans-Regular.woff2") format("woff2");
+	font-family: 'Nunito Sans';
+	font-weight: 700;
+	src: url('../fonts/Nunito/Nunito-Bold.woff2') format('woff2');
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Open Sans";
+	font-family: 'Open Sans';
 	font-weight: 400;
-	src: url("../fonts/Open_Sans/OpenSans-Italic.woff2") format("woff2");
+	src: url('../fonts/Open_Sans/OpenSans-Regular.woff2') format('woff2');
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-weight: 400;
+	src: url('../fonts/Open_Sans/OpenSans-Italic.woff2') format('woff2');
 	font-style: italic;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Open Sans";
+	font-family: 'Open Sans';
 	font-weight: 600;
-	src: url("../fonts/Open_Sans/OpenSans-SemiBold.woff2") format("woff2");
+	src: url('../fonts/Open_Sans/OpenSans-SemiBold.woff2') format('woff2');
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Open Sans";
+	font-family: 'Open Sans';
 	font-weight: 700;
-	src: url("../fonts/Open_Sans/OpenSans-Bold.woff2") format("woff2");
+	src: url('../fonts/Open_Sans/OpenSans-Bold.woff2') format('woff2');
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Open Sans";
+	font-family: 'Open Sans';
 	font-weight: 700;
-	src: url("../fonts/Open_Sans/OpenSans-BoldItalic.woff2") format("woff2");
+	src: url('../fonts/Open_Sans/OpenSans-BoldItalic.woff2') format('woff2');
 	font-style: italic;
 	font-display: swap;
 }
@@ -86,8 +94,8 @@ video {
 
 /* Basic Styles START */
 :root {
-	--text-font: "Open Sans", sans-serif;
-	--headings-font: "Nunito Sans", sans-serif;
+	--text-font: 'Open Sans', sans-serif;
+	--headings-font: 'Nunito Sans', sans-serif;
 	--color-green: #009175;
 	--color-grey: #f6f3ed;
 	--color-pink: #e5848d;
@@ -237,6 +245,34 @@ p {
 	padding: 10px 0;
 	margin-top: 10px;
 	background-color: var(--color-grey);
+}
+
+.main-menu-wrapper button {
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+.burger-open-button {
+	display: block;
+	margin-left: auto;
+	width: 36px;
+	border: none;
+	padding: 0;
+	background: none;
+}
+
+.burger-open-button[aria-expanded='true'] + .main-menu-wrapper {
+	translate: 0;
+}
+
+.burger-close-button {
+	display: block;
+	margin-left: auto;
+}
+
+.burger-close-button img {
+	width: 36px;
 }
 
 .main-menu-list {
@@ -862,6 +898,76 @@ p {
 	}
 }
 
+@media (max-width: 992px) {
+	.main-menu-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: fixed;
+		inset: 0;
+		background-color: var(--color-grey);
+		padding: 20px;
+		overflow: auto;
+		translate: 100vw 0;
+		transition: translate 0.5s ease-in-out;
+	}
+	.main-menu-list {
+		flex-direction: column;
+		align-items: baseline;
+		gap: 10px;
+		font-size: 18px;
+	}
+	.main-menu-item .main-menu-link {
+		font-weight: 700;
+	}
+	.main-menu-item {
+		padding: 0;
+	}
+	.main-menu-item svg {
+		display: none;
+	}
+	.dropdown {
+		position: static;
+		padding: 0;
+		border: none;
+		background-color: transparent;
+		display: block;
+		min-width: 0;
+		transform: none;
+		border-radius: 0;
+		white-space: normal;
+		padding-left: 15px;
+	}
+	.dropdown > li {
+		margin: 0;
+		padding: 0;
+	}
+	.dropdown li ul {
+		margin: 0;
+	}
+	.dropdown li ul li {
+		padding: 0;
+	}
+}
+
+@media (max-width: 992px) and (prefers-reduced-motion) {
+	.main-menu-wrapper {
+		translate: 0;
+		opacity: 0;
+		transition: opacity 500ms ease-in-out;
+	}
+	.burger-open-button[aria-expanded='true'] + .main-menu-wrapper {
+		opacity: 1;
+	}
+}
+
+@media (width>= 992px) {
+	.burger-open-button,
+	.burger-close-button {
+		display: none;
+	}
+}
+
 @media (max-width: 767px) {
 	.hero-content h2 {
 		line-height: 52px;
@@ -917,6 +1023,7 @@ p {
 		align-self: auto;
 	}
 	.prosvita-wrapper {
+		padding: 15px 20px;
 		gap: 30px;
 	}
 	.prosvita-wrapper img {
