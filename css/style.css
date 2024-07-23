@@ -667,7 +667,7 @@ p {
 /* Posters Preview Section START */
 
 .posters-preview {
-	margin-top: 50px;
+	margin: 50px 0;
 }
 
 .posters-preview-title-wrapper {
@@ -732,10 +732,6 @@ p {
 
 /* Content Section START */
 
-.content {
-	margin-top: 50px;
-}
-
 .content-wrapper {
 	display: flex;
 	flex-direction: column;
@@ -749,6 +745,33 @@ p {
 }
 
 /* Content Section END */
+
+/* Breadcrumbs Section START */
+
+.breadcrumbs {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 25px 0;
+	font-weight: 600;
+	font-family: var(--headings-font);
+	row-gap: 15px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+	content: '>';
+	padding: 0 8px;
+	color: #6c757d;
+}
+
+@media (any-hover: hover) {
+	.breadcrumb-item a:not(.active):hover {
+		color: var(--color-green);
+		border-bottom: 1px solid var(--color-green);
+	}
+}
+
+/* Breadcrumbs Section END */
 
 /* Footer Section START */
 

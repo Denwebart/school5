@@ -56,7 +56,9 @@ function openMobileMenu() {
 	topNavMenu.removeAttribute('style');
 	main.setAttribute('inert', ' ');
 	body.style.overflow = 'hidden';
-	scrollBtn.style.display = 'none';
+	if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+		scrollBtn.style.display = 'none';
+	}
 	btnClose.focus();
 }
 
@@ -65,7 +67,9 @@ function closeMobileMenu() {
 	topNavMenu.setAttribute('inert', ' ');
 	main.removeAttribute('inert');
 	body.style.overflow = 'visible';
-	scrollBtn.style.display = 'flex';
+	if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+		scrollBtn.style.display = 'flex';
+	}
 	btnOpen.focus();
 
 	setTimeout(() => {
