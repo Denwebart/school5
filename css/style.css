@@ -961,9 +961,37 @@ p {
 	}
 }
 
-@media (width>= 992px) {
+@media (min-width: 992px) {
 	.burger-open-button,
 	.burger-close-button {
+		display: none;
+	}
+}
+
+@media (max-width: 900px) {
+	.header-wrapper {
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
+	.social-icons {
+		align-self: center;
+	}
+}
+
+@media (max-width: 540px) {
+	.logo-wrapper {
+		flex-direction: column;
+		gap: 5px;
+	}
+	.school-name-wrapper {
+		align-items: center;
+	}
+	.school-name,
+	.full-address {
+		text-align: center;
+	}
+	.address svg {
 		display: none;
 	}
 }
