@@ -881,20 +881,24 @@ p {
 /* Scroll to Top Button END */
 
 /* Media Queries */
-@media (max-width: 1109px) {
+
+/* width <= 1109px */
+@media (max-width: 69.3125em) {
 	.main-menu-list {
 		gap: 15px;
 	}
 }
 
-@media (max-width: 1068px) {
+/* width <= 1068px */
+@media (max-width: 66.75em) {
 	.main-menu-list {
 		gap: 10px;
 		font-size: 1.0625rem;
 	}
 }
 
-@media (max-width: 1061px) {
+/* width <= 1061px */
+@media (max-width: 66.3125em) {
 	.hero-wrapper {
 		flex-direction: column;
 	}
@@ -957,7 +961,8 @@ p {
 	}
 }
 
-@media (max-width: 992px) {
+/* width <= 992px */
+@media (max-width: 62em) {
 	.main-menu-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -1009,7 +1014,8 @@ p {
 	}
 }
 
-@media (max-width: 992px) and (prefers-reduced-motion) {
+/* width <= 992px */
+@media (max-width: 62em) and (prefers-reduced-motion) {
 	.main-menu-wrapper {
 		translate: 0;
 		opacity: 0;
@@ -1020,14 +1026,16 @@ p {
 	}
 }
 
-@media (min-width: 992px) {
+/* width >= 992px */
+@media (min-width: 62em) {
 	.burger-open-button,
 	.burger-close-button {
 		display: none;
 	}
 }
 
-@media (max-width: 900px) {
+/* width <= 900px */
+@media (max-width: 56.25em) {
 	.header-wrapper {
 		flex-direction: column;
 		align-items: center;
@@ -1038,24 +1046,8 @@ p {
 	}
 }
 
-@media (max-width: 540px) {
-	.logo-wrapper {
-		flex-direction: column;
-		gap: 5px;
-	}
-	.school-name-wrapper {
-		align-items: center;
-	}
-	.school-name,
-	.full-address {
-		text-align: center;
-	}
-	.address svg {
-		display: none;
-	}
-}
-
-@media (max-width: 767px) {
+/* width <= 767px */
+@media (max-width: 47.9375em) {
 	.hero-content h2 {
 		line-height: 52px;
 	}
@@ -1116,6 +1108,24 @@ p {
 	.prosvita-wrapper img {
 		width: 100vw;
 		height: 50vw;
+	}
+}
+
+/* width <= 540px */
+@media (max-width: 33.75em) {
+	.logo-wrapper {
+		flex-direction: column;
+		gap: 5px;
+	}
+	.school-name-wrapper {
+		align-items: center;
+	}
+	.school-name,
+	.full-address {
+		text-align: center;
+	}
+	.address svg {
+		display: none;
 	}
 }
 
