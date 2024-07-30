@@ -736,6 +736,7 @@ p {
 	font-size: 2.5rem;
 	font-weight: 600;
 	margin-bottom: 25px;
+	line-height: 1.1;
 }
 
 .content-wrapper p:not(:last-child) {
@@ -964,48 +965,48 @@ p {
 
 .music-department {
 	background-color: #fdede7;
-	border: 3px solid #fdc5b1;
+	border: 3px solid #fdede7;
 }
 
 .art-department {
 	background-color: #ebf0fc;
-	border: 3px solid #c9d9ff;
+	border: 3px solid #ebf0fc;
 }
 
 .theater-department {
 	background-color: #fffae0;
-	border: 3px solid #fff2a9;
+	border: 3px solid #fffae0;
 }
 
 .choreographic-department {
 	gap: 0;
 	background-color: #ebf5e0;
-	border: 3px solid #cae5ac;
+	border: 3px solid #ebf5e0;
 }
 
 .additional-services-department {
 	background-color: #f6f7fa;
-	border: 3px solid #dce5ff;
+	border: 3px solid #f6f7fa;
 }
 
 .inclusive-education-department {
 	background-color: #ffeffc;
-	border: 3px solid #ffd3f7;
+	border: 3px solid #ffeffc;
 }
 
 .psychologist-department {
 	background-color: #fdede7;
-	border: 3px solid #fdc5b1;
+	border: 3px solid #fdede7;
 }
 
 .remote-department {
 	background-color: #f6f7fa;
-	border: 3px solid #dce5ff;
+	border: 3px solid #f6f7fa;
 }
 
 .library-department {
 	background-color: #ffeffc;
-	border: 3px solid #ffd3f7;
+	border: 3px solid #ffeffc;
 }
 
 @media (any-hover: hover) {
