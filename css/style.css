@@ -1017,11 +1017,64 @@ p {
 
 /* Departments Section END */
 
+/* Administration Section START */
+
+.administration {
+	margin: 35px 0;
+}
+
+.administration-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+
+.administration-item {
+	background-color: var(--color-grey);
+	border-radius: 20px;
+	padding: 8px;
+	border: 2px solid var(--color-grey);
+}
+
+@media (any-hover: hover) {
+	.administration-item:hover {
+		background-color: transparent;
+
+		.administration-link h3 {
+			color: var(--color-green);
+		}
+	}
+}
+
+.administration-link {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.administration-link img {
+	width: 120px;
+}
+
+.administration-link h3 {
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.administration-link p {
+	hyphens: none;
+}
+
+/* Administration Section END */
+
 /* Media Queries */
 
 /* width <= 1109px */
 @media (max-width: 69.3125em) {
 	.main-menu-list {
+		gap: 15px;
+	}
+	.administration-link {
 		gap: 15px;
 	}
 }
@@ -1031,6 +1084,9 @@ p {
 	.main-menu-list {
 		gap: 10px;
 		font-size: 1.0625rem;
+	}
+	.administration-link h3 {
+		font-size: 1.125rem;
 	}
 }
 
@@ -1160,9 +1216,21 @@ p {
 		align-items: center;
 		justify-content: center;
 	}
+	.administration-link {
+		flex-direction: column;
+		align-items: center;
+	}
+	.administration-link h3 {
+		font-size: 1.25rem;
+		text-align: center;
+	}
+	.administration-link p {
+		margin-top: 10px;
+		text-align: center;
+	}
 }
 
-/* width <= 992px */
+/* width <= 992px for mobile menu only */
 @media (max-width: 62em) and (prefers-reduced-motion) {
 	.main-menu-wrapper {
 		translate: 0;
@@ -1257,6 +1325,16 @@ p {
 		width: 100vw;
 		height: 50vw;
 	}
+	.administration-list {
+		grid-template-columns: 1fr;
+	}
+	.administration-link {
+		flex-direction: row;
+	}
+	.administration-link h3,
+	.administration-link p {
+		text-align: start;
+	}
 }
 
 /* width <= 540px */
@@ -1277,6 +1355,13 @@ p {
 	}
 	.subpages-list {
 		justify-content: center;
+	}
+	.administration-link {
+		flex-direction: column;
+	}
+	.administration-link h3,
+	.administration-link p {
+		text-align: center;
 	}
 }
 
