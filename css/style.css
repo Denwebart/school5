@@ -1067,6 +1067,47 @@ p {
 
 /* Administration Section END */
 
+/* Teachers categories Section START */
+
+.teachers-categories {
+	margin: 35px 0;
+}
+
+.teachers-categories-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+}
+
+.teachers-categories-link {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 302px;
+}
+
+.teachers-categories-link img {
+	border-radius: 16px;
+}
+
+.teachers-categories-title {
+	font-size: 1.125rem;
+	font-weight: 600;
+	margin-top: 10px;
+	text-align: center;
+}
+
+@media (any-hover: hover) {
+	.teachers-categories-link:hover {
+		.teachers-categories-title {
+			color: var(--color-green);
+		}
+	}
+}
+
+/* Teachers categories Section END */
+
 /* Media Queries */
 
 /* width <= 1109px */
