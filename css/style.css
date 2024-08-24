@@ -803,6 +803,99 @@ p {
 }
 /* Subpages Section END */
 
+/* News Blog Section START */
+
+.news-blog {
+	margin-bottom: 50px;
+}
+
+.news-blog-wrapper {
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+.news-blog-heading {
+	font-size: 2.25rem;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.news-item {
+	display: grid;
+	grid-template-columns: 500px 1fr;
+	gap: 30px;
+	margin-bottom: 40px;
+}
+
+.news-item-date {
+	display: inline-block;
+	font-family: var(--headings-font);
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+
+.news-item-image img {
+	border-radius: 10px;
+}
+
+.news-item-text h3 {
+	font-size: 2rem;
+	font-weight: 600;
+	margin-bottom: 10px;
+	line-height: 36px;
+}
+
+.news-item-text p {
+	margin-bottom: 10px;
+}
+
+.read-more-btn {
+	display: inline-block;
+	font-family: var(--headings-font);
+	font-weight: 600;
+	border: 2px solid #f9e498;
+	background-color: #f9e498;
+	padding: 7px 12px;
+	border-radius: 8px;
+	white-space: nowrap;
+	margin-top: 10px;
+}
+
+.pagination {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 40px 10px;
+	padding: 30px 0;
+}
+
+.pagination-link {
+	padding: 10px 16px;
+	background-color: var(--color-green);
+	border: 2px solid var(--color-green);
+	border-radius: 4px;
+	color: #ffffff;
+}
+
+@media (any-hover: hover) {
+	.read-more-btn:hover {
+		background-color: transparent;
+	}
+	.news-item-image:hover + .news-item-text h3 {
+		color: var(--color-green);
+	}
+	.news-item-text h3:hover {
+		color: var(--color-green);
+	}
+	.pagination-link:hover {
+		background-color: transparent;
+		color: var(--color-green);
+	}
+}
+
+/* News Blog Section END */
+
 /* About Content Section START */
 
 .about-content h1 {
@@ -812,7 +905,7 @@ p {
 
 .about-content-wrapper {
 	display: flex;
-	gap: 20px;
+	gap: 30px;
 }
 
 .about-content-wrapper img {
@@ -1193,6 +1286,15 @@ p {
 		align-items: center;
 		text-align: center;
 	}
+	.news-blog-wrapper {
+		grid-template-columns: 1fr 1fr;
+		gap: 30px;
+	}
+	.news-item {
+		grid-template-columns: 1fr;
+		justify-items: center;
+		align-items: center;
+	}
 }
 
 /* width <= 992px */
@@ -1375,6 +1477,15 @@ p {
 	.administration-link h3,
 	.administration-link p {
 		text-align: start;
+	}
+	.news-blog-wrapper {
+		grid-template-columns: 1fr;
+	}
+	.news-item-text {
+		text-align: center;
+	}
+	.news-item-text p {
+		text-align: justify;
 	}
 }
 
