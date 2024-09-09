@@ -115,6 +115,7 @@ h4,
 h5,
 h6 {
 	font-family: var(--headings-font);
+	text-wrap: balance;
 }
 
 .wrapper {
@@ -137,6 +138,8 @@ p {
 	word-wrap: break-word;
 	hyphens: auto;
 	line-height: 26px;
+	max-width: 65ch;
+	text-wrap: pretty;
 }
 /* Basic Styles END */
 
@@ -196,10 +199,6 @@ p {
 	gap: 15px;
 }
 
-.social-icons svg {
-	fill: var(--color-green);
-}
-
 .facebook-icon,
 .instagram-icon,
 .telegram-icon {
@@ -210,22 +209,27 @@ p {
 	width: 28px;
 }
 
-@media (any-hover: hover) {
-	.facebook-icon:hover {
-		fill: #1877f2;
-	}
+.facebook-icon {
+	fill: #1877f2;
+}
 
-	.instagram-icon:hover {
-		fill: #d33a95;
-	}
+.instagram-icon {
+	fill: #d33a95;
+}
 
-	.telegram-icon:hover {
-		fill: #3390ec;
-	}
+.telegram-icon {
+	fill: #3390ec;
+}
 
-	.youtube-icon:hover {
-		fill: #ff0000;
-	}
+.youtube-icon {
+	fill: #ff0000;
+}
+
+.facebook-icon:hover,
+.instagram-icon:hover,
+.telegram-icon:hover,
+.youtube-icon:hover {
+	opacity: 0.7;
 }
 
 .address {
@@ -730,19 +734,74 @@ p {
 
 /* Posters Preview Section END */
 
-/* Content Section START */
+/* Content and FAQ Section START */
 
-.content h1 {
-	font-size: 2.5rem;
+.content-faq-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 25px;
+}
+
+.content h1,
+.faq h2 {
+	font-size: 2.375rem;
 	font-weight: 600;
 	margin-bottom: 25px;
 	line-height: 1.1;
 }
 
-.content-wrapper p:not(:last-child) {
+.content p {
+	text-align: justify;
+}
+
+.content p:not(:last-child) {
 	margin-bottom: 15px;
 }
-/* Content Section END */
+
+.accordion {
+	background-color: #eeeeee;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	text-align: left;
+	border: none;
+	outline: none;
+	transition: 0.4s;
+	font-family: var(--headings-font);
+	font-weight: 600;
+	font-size: 1.125rem;
+	border-radius: 10px 10px 0 0;
+	line-height: 30px;
+}
+
+.accordion:not(:first-child) {
+	margin-top: 15px;
+}
+
+.accordion-active {
+	background-color: #ccc;
+}
+
+@media (any-hover: hover) {
+	.accordion:hover {
+		background-color: #ccc;
+	}
+}
+
+.panel {
+	background-color: white;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	border: 2px solid #ccc;
+	border-top: none;
+	border-radius: 0 0 10px 10px;
+}
+
+.panel p {
+	padding: 18px;
+}
+/* Content and FAQ Section END */
 
 /* Breadcrumbs Section START */
 
@@ -774,8 +833,7 @@ p {
 /* Subpages Section START */
 
 .subpages {
-	margin-top: 20px;
-	margin-bottom: 30px;
+	margin: 35px 0 50px 0;
 }
 
 .subpages-list {
@@ -1030,7 +1088,7 @@ p {
 /* Departments Section START */
 
 .departments {
-	margin: 35px 0;
+	margin: 35px 0 50px 0;
 }
 
 .departments-list {
@@ -1113,7 +1171,7 @@ p {
 /* Administration Section START */
 
 .administration {
-	margin: 35px 0;
+	margin: 35px 0 50px 0;
 }
 
 .administration-list {
@@ -1163,7 +1221,7 @@ p {
 /* Teachers categories Section START */
 
 .teachers-categories {
-	margin: 35px 0;
+	margin: 35px 0 50px 0;
 }
 
 .teachers-categories-list {
@@ -1232,6 +1290,12 @@ p {
 	.hero-content {
 		text-align: center;
 	}
+	.hero-content h2 {
+		margin-bottom: 25px;
+	}
+	.hero-content p {
+		margin: 0 auto;
+	}
 	.hero-buttons {
 		justify-content: center;
 	}
@@ -1299,6 +1363,9 @@ p {
 
 /* width <= 992px */
 @media (max-width: 62em) {
+	.hero-content h2 {
+		margin-bottom: 20px;
+	}
 	.main-menu-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -1371,6 +1438,12 @@ p {
 		margin-top: 10px;
 		text-align: center;
 	}
+	.content-faq-wrapper {
+		grid-template-columns: 1fr;
+	}
+	.faq {
+		order: -1;
+	}
 }
 
 /* width <= 992px for mobile menu only */
@@ -1408,7 +1481,7 @@ p {
 /* width <= 767px */
 @media (max-width: 47.9375em) {
 	.hero-content h2 {
-		line-height: 52px;
+		line-height: 44px;
 	}
 	.hero-buttons {
 		flex-wrap: wrap;

@@ -92,3 +92,22 @@ const el = document.querySelector('.main-menu');
 const observer = new IntersectionObserver(([e]) => e.target.classList.toggle('is-pinned', e.intersectionRatio < 1), { threshold: [1] });
 
 observer.observe(el);
+
+// Accordion START
+
+const accordion = document.getElementsByClassName('accordion');
+let i;
+
+for (i = 0; i < accordion.length; i++) {
+	accordion[i].addEventListener('click', function () {
+		this.classList.toggle('accordion-active');
+		var panel = this.nextElementSibling;
+		if (panel.style.maxHeight) {
+			panel.style.maxHeight = null;
+		} else {
+			panel.style.maxHeight = panel.scrollHeight + 'px';
+		}
+	});
+}
+
+// Accordion END
