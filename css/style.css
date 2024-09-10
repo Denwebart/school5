@@ -1168,55 +1168,56 @@ p {
 
 /* Departments Section END */
 
-/* Administration Section START */
+/* Teachers Section START */
 
-.administration {
+.teachers {
 	margin: 35px 0 50px 0;
 }
 
-.administration-list {
+.teachers-list {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 20px;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 30px;
 }
 
-.administration-item {
-	background-color: var(--color-grey);
-	border-radius: 20px;
-	padding: 8px;
-	border: 2px solid var(--color-grey);
-}
-
-@media (any-hover: hover) {
-	.administration-item:hover {
-		background-color: transparent;
-
-		.administration-link h3 {
-			color: var(--color-green);
-		}
-	}
-}
-
-.administration-link {
+.teacher-link {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	gap: 20px;
+	border-radius: 10px;
 }
 
-.administration-link img {
-	width: 120px;
+.teacher-link img {
+	border-radius: 10px;
 }
 
-.administration-link h3 {
+.teacher-link h3 {
 	font-size: 1.25rem;
 	font-weight: 600;
+	text-align: center;
+	margin: 15px 0 10px 0;
 }
 
-.administration-link p {
+.teacher-link p {
+	font-family: var(--headings-font);
+	font-size: 1.125rem;
+	text-align: center;
 	hyphens: none;
 }
 
-/* Administration Section END */
+@media (any-hover: hover) {
+	.teacher-link img:hover {
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	}
+	.teacher-link img:hover + h3 {
+		color: var(--color-green);
+	}
+	.teacher-link h3:hover {
+		color: var(--color-green);
+	}
+}
+
+/* Teachers Section END */
 
 /* Teachers categories Section START */
 
@@ -1359,6 +1360,12 @@ p {
 		justify-items: center;
 		align-items: center;
 	}
+	.teacher-link h3 {
+		font-size: 1.125rem;
+	}
+	.teacher-link p {
+		font-size: 1rem;
+	}
 }
 
 /* width <= 992px */
@@ -1443,6 +1450,11 @@ p {
 	}
 	.faq {
 		order: -1;
+	}
+	.teachers-list {
+		grid-template-columns: fit-content(295px) fit-content(295px);
+		justify-content: center;
+		row-gap: 50px;
 	}
 }
 
@@ -1587,6 +1599,9 @@ p {
 	.administration-link h3,
 	.administration-link p {
 		text-align: center;
+	}
+	.teachers-list {
+		grid-template-columns: fit-content(295px);
 	}
 }
 
