@@ -476,27 +476,25 @@ p {
 }
 
 .statistics-list {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
 	gap: 20px;
 }
 
 .statistics-item {
 	display: flex;
-	flex-grow: 1;
 	align-items: center;
-	max-width: 324px;
 	font-family: var(--headings-font);
 	font-weight: 600;
 	background-color: var(--color-grey);
 	padding: 10px 20px;
 	border-radius: 8px;
+	gap: 10px;
 }
 
-.statistics-item img {
-	margin-right: 10px;
+.statistics-text-wrapper {
+	display: flex;
+	flex-direction: column;
 }
 
 .statistics-count {
@@ -1269,6 +1267,19 @@ p {
 
 /* Media Queries */
 
+/* width <= 1200px */
+@media (max-width: 75em) {
+	.statistics-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.statistics-item {
+		justify-content: center;
+	}
+	.statistics-text-wrapper {
+		flex-direction: row;
+	}
+}
+
 /* width <= 1109px */
 @media (max-width: 69.3125em) {
 	.main-menu-list {
@@ -1579,6 +1590,9 @@ p {
 	.news-item-text p {
 		text-align: justify;
 	}
+	.statistics-list {
+		grid-template-columns: 1fr;
+	}
 }
 
 /* width <= 540px */
@@ -1609,6 +1623,13 @@ p {
 	}
 	.teachers-list {
 		grid-template-columns: fit-content(295px);
+	}
+}
+
+/* width <= 400px */
+@media (max-width: 25em) {
+	.statistics-text-wrapper {
+		flex-direction: column;
 	}
 }
 
