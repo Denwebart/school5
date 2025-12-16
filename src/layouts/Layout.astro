@@ -1,0 +1,61 @@
+---
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang='uk'>
+  <!-- Head START -->
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Дитяча школа мистецтв №5 Харківської міської ради</title>
+    <link rel='apple-touch-icon' sizes='180x180' href='images/favicon/apple-touch-icon.png' />
+    <link rel='icon' type='image/png' sizes='32x32' href='images/favicon/favicon-32x32.png' />
+    <link rel='icon' type='image/png' sizes='16x16' href='images/favicon/favicon-16x16.png' />
+    <link rel='manifest' href='images/favicon/site.webmanifest' />
+    <link rel='shortcut icon' href='images/favicon/favicon.ico' />
+    <!-- <script defer src="js/app.js"></script> -->
+
+    <!-- Alpine Plugins -->
+    <!-- <script defer src="js/alpinejs-focus.min.js"></script> -->
+
+    <!-- AlpineJS Core minified -->
+    <!-- <script defer src="js/alpinejs-3.15.1.min.js"></script> -->
+  </head>
+  <!-- Head END -->
+
+  <body>
+    <!-- Main Header START -->
+    <Header />
+    <!-- Main Header END -->
+    <main class='h-500'>
+      <slot />
+    </main>
+
+    <!-- Parallax hero images effect START -->
+    <script>
+      const elements = document.querySelectorAll('.parallax');
+
+      document.addEventListener('mousemove', (e) => {
+        const { innerWidth, innerHeight } = window;
+        const offsetX = (e.clientX - innerWidth / 2) / (innerWidth / 2);
+        const offsetY = (e.clientY - innerHeight / 2) / (innerHeight / 2);
+
+        elements.forEach((el) => {
+          if (!(el instanceof HTMLElement)) return;
+
+          const speed = parseFloat(el.dataset.speed || '10');
+          const baseX = parseFloat(el.dataset.offsetX || '0');
+          const baseY = parseFloat(el.dataset.offsetY || '0');
+
+          const moveX = offsetX * speed;
+          const moveY = offsetY * speed;
+
+          el.style.transform = `translate(${baseX + moveX}px, ${baseY + moveY}px)`;
+        });
+      });
+    </script>
+    <!-- Parallax hero images effect END -->
+  </body>
+</html>

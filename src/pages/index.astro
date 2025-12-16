@@ -1,16 +1,112 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Главная страница" description="Описание сайта">
+  <!-- Hero START -->
+  <section
+    class="relative z-1 bg-[#f8e8e9] pt-25 before:absolute before:inset-0 before:-z-1
+      before:bg-[url('/images/rectangle_before.png')] before:bg-top before:bg-no-repeat before:content-['']
+      after:absolute after:inset-0 after:-z-10 after:bg-[url('/images/rectangle_after.png')] after:bg-bottom
+      after:bg-no-repeat after:content-['']"
+  >
+    <div class="mx-auto px-30">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="relative z-1 flex flex-col items-center text-center">
+          <img src="images/bird.png" class="mb-4" alt="bird" />
+          <h1 class="mb-4 max-w-120 text-6xl leading-[1.04] font-black">
+            A lifetime of
+            <span class="text-7xl">Confidence</span>
+            starts here
+          </h1>
+          <p class="mx-auto mb-4 max-w-131">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          </p>
+          <a
+            href="/"
+            class="relative z-1 mt-2.5 inline-block overflow-hidden rounded-4xl border border-dashed border-rose-400
+              bg-transparent px-14 py-4 font-bold text-white before:absolute before:inset-0 before:-z-10 before:m-1
+              before:rounded-[30px] before:bg-rose-400 before:transition-all before:duration-300 hover:before:m-0"
+          >
+            Докладніше
+          </a>
+          <img
+            src="images/circle.png"
+            class="absolute inset-x-0 top-4 -z-1"
+            alt="decor circle"
+          />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <img
+            src="images/kid1.png"
+            class="parallax transition-transform duration-300 ease-out"
+            style="transform: translate(4.67px, 11.23px)"
+            data-offset-x="4.67"
+            data-offset-y="11.23"
+            data-speed="10"
+            alt="kid 1"
+          />
+          <img
+            src="images/kid2.png"
+            class="parallax transition-transform duration-300 ease-out"
+            style="transform: translate(5.34px, 21.46px)"
+            data-offset-x="5.34"
+            data-offset-y="21.46"
+            data-speed="12"
+            alt="kid 2"
+          />
+          <img
+            src="images/kid3.png"
+            class="parallax transition-transform duration-300 ease-out"
+            style="transform: translate(7.99px, 31.69px)"
+            data-offset-x="7.99"
+            data-offset-y="31.69"
+            data-speed="8"
+            alt="kid 3"
+          />
+          <img
+            src="images/kid4.png"
+            class="parallax transition-transform duration-300 ease-out"
+            style="transform: translate(16.32px, 42px)"
+            data-offset-x="16.32"
+            data-offset-y="42"
+            data-speed="15"
+            alt="kid 4"
+          />
+        </div>
+      </div>
+      <img
+        src="images/shape1.png"
+        class="absolute top-0 left-0 -z-2"
+        alt="hero shape 1"
+      />
+      <img
+        src="images/shape2.png"
+        class="absolute top-0 right-0 -z-2"
+        alt="hero shape 2"
+      />
+      <img
+        src="images/shape3.png"
+        class="animate-movebounce absolute -bottom-15 left-0"
+        alt="hero shape 3"
+      />
+      <img
+        src="images/shape4.png"
+        class="animate-rotate absolute bottom-[12%] left-[44%] -z-1"
+        alt="hero shape 4"
+      />
+      <img
+        src="images/shape5.png"
+        class="animate-movebounce absolute top-[16%] left-[48%] -z-1"
+        alt="hero shape 5"
+      />
+      <img
+        src="images/shape6.png"
+        class="animate-moveleftbounce absolute bottom-[25%] left-[50%] -z-1"
+        alt="hero shape 6"
+      />
+    </div>
+  </section>
+  <!-- Hero END -->
+</Layout>
