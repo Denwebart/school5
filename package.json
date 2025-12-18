@@ -3,9 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev --host",
+    "dev": "start chrome http://localhost:4321 & astro dev --host",
     "build": "astro build && node fix-paths.js",
-    "preview": "astro preview",
+    "preview": "start chrome http://localhost:5000 & astro preview --port 5000 --host",
     "astro": "astro"
   },
   "dependencies": {
