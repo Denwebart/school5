@@ -4,7 +4,6 @@
       <div class="flex flex-col items-center gap-3 lg:flex-row">
         <a href="/">
           <picture>
-            <!-- For large screens (lg:) >= 1024px — 100x100 -->
             <source
               srcset="images/logo/logo-light_128x128.avif 1x, images/logo/logo-light_256x256.avif 2x"
               media="(min-width: 1024px)"
@@ -20,7 +19,6 @@
               height="100"
             />
 
-            <!-- For small screens < 1024px — 120x120 -->
             <source
               srcset="images/logo/logo-light_128x128.avif 1x, images/logo/logo-light_256x256.avif 2x"
               type="image/avif"
@@ -34,7 +32,6 @@
               height="120"
             />
 
-            <!-- Fallback -->
             <img
               src="images/logo/logo-light_128x128.png"
               srcset="images/logo/logo-light_256x256.png 2x"
@@ -49,7 +46,6 @@
           <li class="relative inline-block">
             <span class="relative inline-block text-2xl font-bold text-nowrap text-white lg:text-lg xl:text-3xl">
               Дитяча школа мистецтв №5
-              <!-- SVG START -->
               <span class="absolute top-1/2 left-1/2 z-[-1] -translate-x-[calc(50%-50px)] -translate-y-1/2">
                 <svg
                   class="lg:h-11.5 lg:w-157.5"
@@ -63,7 +59,6 @@
                   ></path>
                 </svg>
               </span>
-              <!-- SVG END -->
             </span>
           </li>
           <li class="mt-1">
@@ -198,325 +193,396 @@
     <nav>
       <ul class="flex items-center gap-4 text-lg">
         <li>
-          <a href="/" class="block py-6 text-lg font-semibold whitespace-nowrap text-rose-500">Головна</a>
+          <a
+            href="/"
+            class="block py-6 text-lg font-semibold whitespace-nowrap text-rose-500 transition-colors
+              hover:text-rose-700"
+            >Головна</a
+          >
         </li>
-        <li>
-          <div class="expand-hover-area group relative z-2">
-            <a href="/" class="text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500">
-              <span class="inline-block align-middle">Про школу</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="inline-block size-4 align-middle"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m6 9 6 6 6-6"></path>
-              </svg>
-            </a>
-            <ul
-              class="absolute top-full left-1/2 z-50 mt-2 hidden w-max -translate-x-1/2 rounded-xl border-2 border-t-2
-                border-solid border-rose-500 bg-white font-semibold whitespace-nowrap shadow-lg transition-opacity
-                duration-200 group-hover:block group-hover:opacity-100"
+
+        <li class="group relative z-20">
+          <a
+            href="/"
+            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+          >
+            <span>Про школу</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="ml-1 size-4 transition-transform duration-300 group-hover:rotate-180"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </a>
+          <div
+            class="invisible absolute top-full left-1/2 -mt-2 w-max -translate-x-1/2 translate-y-4 transform opacity-0
+              transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+          >
+            <ul class="overflow-hidden border-t-3 border-b-3 border-rose-500 bg-white font-semibold shadow-lg">
               <li>
-                <a href="/" class="block px-6 py-2 transition-colors hover:text-rose-500">Історія школи</a>
+                <a href="/" class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
+                  >Історія школи</a
+                >
               </li>
               <li>
-                <a href="/" class="block px-6 py-2 transition-colors hover:text-rose-500">Проєктна діяльність</a>
+                <a href="/" class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
+                  >Проєктна діяльність</a
+                >
               </li>
               <li>
-                <a href="/" class="block px-6 py-2 transition-colors hover:text-rose-500">Символіка школи</a>
+                <a href="/" class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
+                  >Символіка школи</a
+                >
               </li>
               <li>
-                <a href="gallery.html" class="block px-6 py-2 transition-colors hover:text-rose-500">Галерея</a>
+                <a href="gallery.html" class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
+                  >Галерея</a
+                >
               </li>
             </ul>
           </div>
         </li>
-        <li>
-          <div class="expand-hover-area group relative z-3">
-            <a href="/" class="text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500">
-              <span class="inline-block align-middle">Відділення</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="inline-block size-4 align-middle"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m6 9 6 6 6-6"></path>
-              </svg>
-            </a>
+
+        <li class="group relative z-20">
+          <a
+            href="/"
+            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+          >
+            <span>Відділення</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="ml-1 size-4 transition-transform duration-300 group-hover:rotate-180"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </a>
+          <div
+            class="invisible absolute top-full left-1/2 -mt-2 w-max -translate-x-1/2 translate-y-4 transform opacity-0
+              transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+          >
             <ul
-              class="absolute top-full left-1/2 z-50 mt-2 hidden w-max -translate-x-1/2 rounded-xl border-2 border-solid
-                border-rose-500 bg-white font-semibold whitespace-nowrap opacity-0 shadow-lg transition-opacity
-                duration-200 group-hover:block group-hover:opacity-100"
+              class="max-h-[80vh] overflow-y-auto border-t-3 border-b-3 border-rose-500 bg-white py-2 font-semibold
+                shadow-lg"
             >
               <li>
-                <a href="music-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Музичне відділення</a
+                <a
+                  href="music-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Музичне відділення</a
                 >
               </li>
               <li>
-                <ul class="flex flex-col pl-3 lg:gap-1 lg:pl-6 lg:font-semibold">
+                <ul class="my-1 ml-6 flex flex-col border-l-2 border-rose-200 pl-3 text-lg lg:gap-1 lg:pl-1">
                   <li>
-                    <a href="piano-violin-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                    <a href="piano-violin-department.html" class="block px-4 py-1 transition-colors hover:text-rose-600"
                       >Фортепіанно-струнний відділ</a
                     >
                   </li>
                   <li>
                     <a
                       href="folk-spiritual-department.html"
-                      class="block px-6 py-2 transition-colors hover:text-rose-500">Народно-духовий відділ</a
+                      class="block px-4 py-1 transition-colors hover:text-rose-600">Народно-духовий відділ</a
                     >
                   </li>
                   <li>
-                    <a href="vocal-choral-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                    <a href="vocal-choral-department.html" class="block px-4 py-1 transition-colors hover:text-rose-600"
                       >Вокально-хоровий відділ</a
                     >
                   </li>
                   <li>
-                    <a href="music-theory-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                    <a href="music-theory-department.html" class="block px-4 py-1 transition-colors hover:text-rose-600"
                       >Музично-теоретичний відділ</a
                     >
                   </li>
                 </ul>
               </li>
+              <li class="my-1 border-t border-gray-100"></li>
               <li>
-                <a href="painting-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Художнє відділення</a
+                <a
+                  href="painting-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Художнє відділення</a
                 >
               </li>
               <li>
                 <a
                   href="theater-choreography-department.html"
-                  class="block px-6 py-2 transition-colors hover:text-rose-500">Театрально-хореографічне відділення</a
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
+                  >Театрально-хореографічне відділення</a
                 >
               </li>
               <li>
                 <a
                   href="additional-services-department.html"
-                  class="block px-6 py-2 transition-colors hover:text-rose-500">Додаткові освітні платні послуги</a
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
+                  >Додаткові освітні платні послуги</a
                 >
               </li>
               <li>
-                <a href="inclusion-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                <a
+                  href="inclusion-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
                   >Інклюзивна початкова мистецька освіта</a
                 >
               </li>
               <li>
-                <a href="psychology-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Психолог</a
+                <a
+                  href="psychology-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Психолог</a
                 >
               </li>
               <li>
-                <a href="online-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                <a
+                  href="online-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
                   >Дистанційне відділення</a
                 >
               </li>
               <li>
-                <a href="library-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Бібліотека</a
+                <a
+                  href="library-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Бібліотека</a
                 >
               </li>
             </ul>
           </div>
         </li>
-        <li>
-          <div class="expand-hover-area group relative z-2">
-            <a href="/" class="text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500">
-              <span class="inline-block align-middle">Адміністрація</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="inline-block size-4 align-middle"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m6 9 6 6 6-6"></path>
-              </svg>
-            </a>
-            <ul
-              class="absolute top-full left-1/2 z-50 mt-2 hidden w-max -translate-x-1/2 rounded-xl border-2 border-solid
-                border-rose-500 bg-white font-semibold whitespace-nowrap opacity-0 shadow-lg transition-opacity
-                duration-200 group-hover:block group-hover:opacity-100"
+
+        <li class="group relative z-20">
+          <a
+            href="/"
+            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+          >
+            <span>Адміністрація</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="ml-1 size-4 transition-transform duration-300 group-hover:rotate-180"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </a>
+          <div
+            class="invisible absolute top-full left-1/2 -mt-2 w-max -translate-x-1/2 translate-y-4 transform opacity-0
+              transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+          >
+            <ul class="overflow-hidden border-t-3 border-b-3 border-rose-500 bg-white font-semibold shadow-lg">
               <li>
-                <a href="music-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                <a
+                  href="music-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
                   >Кравчук Оксана Вікторівна</a
                 >
               </li>
               <li>
-                <a href="painting-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                <a
+                  href="painting-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
                   >Новікова Тетяна Сергіївна</a
                 >
               </li>
               <li>
                 <a
                   href="theater-choreography-department.html"
-                  class="block px-6 py-2 transition-colors hover:text-rose-500">Вініченко Марина Володимирівна</a
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
+                  >Вініченко Марина Володимирівна</a
                 >
               </li>
               <li>
                 <a
                   href="additional-services-department.html"
-                  class="block px-6 py-2 transition-colors hover:text-rose-500">Шугай Алевтина Олександрівна</a
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
+                  >Шугай Алевтина Олександрівна</a
                 >
               </li>
               <li>
-                <a href="inclusion-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                <a
+                  href="inclusion-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
                   >Бубнова Олена Володимирівна</a
                 >
               </li>
             </ul>
           </div>
         </li>
-        <li>
-          <div class="expand-hover-area group relative z-3">
-            <a href="/" class="text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500">
-              <span class="inline-block align-middle">Викладачі</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="inline-block size-4 align-middle"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m6 9 6 6 6-6"></path>
-              </svg>
-            </a>
+
+        <li class="group relative z-20">
+          <a
+            href="/"
+            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+          >
+            <span>Викладачі</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="ml-1 size-4 transition-transform duration-300 group-hover:rotate-180"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </a>
+          <div
+            class="invisible absolute top-full left-1/2 -mt-2 w-max -translate-x-1/2 translate-y-4 transform opacity-0
+              transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+          >
             <ul
-              class="absolute top-full left-1/2 z-50 mt-2 hidden w-max -translate-x-1/2 rounded-xl border-2 border-solid
-                border-rose-500 bg-white font-semibold whitespace-nowrap opacity-0 shadow-lg transition-opacity
-                duration-200 group-hover:block group-hover:opacity-100"
+              class="max-h-[80vh] overflow-y-auto border-t-3 border-b-3 border-rose-500 bg-white py-2 font-semibold
+                shadow-lg"
             >
               <li>
-                <a href="music-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Музичне відділення</a
+                <a
+                  href="music-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Музичне відділення</a
                 >
               </li>
               <li>
-                <ul class="flex flex-col pl-3 lg:gap-1 lg:pl-6 lg:font-semibold">
+                <ul class="my-1 ml-6 flex flex-col border-l-2 border-rose-200 pl-3 text-lg lg:gap-1 lg:pl-1">
                   <li>
-                    <a href="piano-violin-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                    <a href="piano-violin-department.html" class="block px-4 py-1 transition-colors hover:text-rose-600"
                       >Фортепіанно-струнний відділ</a
                     >
                   </li>
                   <li>
                     <a
                       href="folk-spiritual-department.html"
-                      class="block px-6 py-2 transition-colors hover:text-rose-500">Народно-духовий відділ</a
+                      class="block px-4 py-1 transition-colors hover:text-rose-600">Народно-духовий відділ</a
                     >
                   </li>
                   <li>
-                    <a href="vocal-choral-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                    <a href="vocal-choral-department.html" class="block px-4 py-1 transition-colors hover:text-rose-600"
                       >Вокально-хоровий відділ</a
                     >
                   </li>
                   <li>
-                    <a href="music-theory-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                    <a href="music-theory-department.html" class="block px-4 py-1 transition-colors hover:text-rose-600"
                       >Музично-теоретичний відділ</a
                     >
                   </li>
                 </ul>
               </li>
+              <li class="my-1 border-t border-gray-100"></li>
               <li>
-                <a href="painting-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Художнє відділення</a
+                <a
+                  href="painting-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Художнє відділення</a
                 >
               </li>
               <li>
                 <a
                   href="theater-choreography-department.html"
-                  class="block px-6 py-2 transition-colors hover:text-rose-500">Театральний клас</a
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Театральний клас</a
                 >
               </li>
               <li>
                 <a
                   href="additional-services-department.html"
-                  class="block px-6 py-2 transition-colors hover:text-rose-500">Хореографічний клас</a
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Хореографічний клас</a
                 >
               </li>
               <li>
-                <a href="inclusion-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
+                <a
+                  href="inclusion-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600"
                   >Інклюзивна початкова мистецька освіта</a
                 >
               </li>
               <li>
-                <a href="psychology-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Психолог</a
+                <a
+                  href="psychology-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Психолог</a
                 >
               </li>
               <li>
-                <a href="library-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Бібліотека</a
+                <a
+                  href="library-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Бібліотека</a
                 >
               </li>
             </ul>
           </div>
         </li>
-        <li>
-          <div class="expand-hover-area group relative z-2">
-            <a href="/" class="text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500">
-              <span class="inline-block align-middle">Корисна інформація</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="inline-block size-4 align-middle"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m6 9 6 6 6-6"></path>
-              </svg>
-            </a>
-            <ul
-              class="absolute top-full left-1/2 z-50 mt-2 hidden w-max -translate-x-1/2 rounded-xl border-2 border-solid
-                border-rose-500 bg-white font-semibold whitespace-nowrap opacity-0 shadow-lg transition-opacity
-                duration-200 group-hover:block group-hover:opacity-100"
+
+        <li class="group relative z-20">
+          <a
+            href="/"
+            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+          >
+            <span>Корисна інформація</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="ml-1 size-4 transition-transform duration-300 group-hover:rotate-180"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </a>
+          <div
+            class="invisible absolute top-full left-1/2 -mt-2 w-max -translate-x-1/2 translate-y-4 transform opacity-0
+              transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+          >
+            <ul class="overflow-hidden border-t-3 border-b-3 border-rose-500 bg-white font-semibold shadow-lg">
               <li>
-                <a href="music-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Викладачам</a
+                <a
+                  href="music-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Викладачам</a
                 >
               </li>
               <li>
-                <a href="painting-department.html" class="block px-6 py-2 transition-colors hover:text-rose-500"
-                  >Батькам</a
+                <a
+                  href="painting-department.html"
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Батькам</a
                 >
               </li>
               <li>
                 <a
                   href="theater-choreography-department.html"
-                  class="block px-6 py-2 transition-colors hover:text-rose-500">Нормативна база</a
+                  class="block px-6 py-2 transition-colors hover:bg-rose-50 hover:text-rose-600">Нормативна база</a
                 >
               </li>
             </ul>
           </div>
         </li>
+
         <li>
-          <a href="/" class="text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500">Новини</a>
+          <a href="/" class="block py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+            >Новини</a
+          >
         </li>
+
         <li>
-          <a href="/" class="text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500">Події</a>
+          <a href="/" class="block py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+            >Події</a
+          >
         </li>
+
         <li>
-          <a href="/" class="text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500">Контакти</a>
+          <a href="/" class="block py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+            >Контакти</a
+          >
         </li>
       </ul>
     </nav>
