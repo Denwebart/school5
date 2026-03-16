@@ -1,0 +1,261 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import sharp from "sharp";
+
+export interface Props {
+  src: string;
+  alt?: string;
+  width?: number | string;
+  height?: number | string;
+  loading?: "lazy" | "eager" | null;
+  decoding?: "async" | "sync" | "auto" | null;
+  formats?: ("avif" | "webp" | "png" | "jpg" | "jpeg")[];
+  class?: string;
+}
+
+const { src, alt = "", width, height, loading, decoding, formats: customFormats, class: className } = Astro.props;
+
+// 1. Check if the image is an external URL, SVG, or GIF
+const isExternal = src.startsWith("http://") || src.startsWith("https://") || src.startsWith("//");
+const isSvg = src.toLowerCase().endsWith(".svg");
+const isGif = src.toLowerCase().endsWith(".gif");
+
+// If external, SVG, or GIF, bypass processing entirely and render a standard <img> tag
+const skipProcessing = isExternal || isSvg || isGif;
+
+// Normalize the path (remove leading slash) for local processing
+const normalizedSrc = skipProcessing ? src : src.replace(/^\/+/, "");
+
+// Prepare variables for the template
+let pictureSources: any[] = [];
+let fallbackImg = { url: "", width: 0, height: 0 };
+const generateTasks: Promise<any>[] = [];
+const copyTasks: Promise<any>[] = [];
+const localUsedFiles: string[] = []; // Track files used by this specific component instance
+
+// Bypass TypeScript strict index signature error by casting globalThis to any
+const globalStore = globalThis as any;
+if (!globalStore.__astroPictureTasks) {
+  globalStore.__astroPictureTasks = new Map<string, Promise<any>>();
+}
+const globalTasks: Map<string, Promise<any>> = globalStore.__astroPictureTasks;
+
+if (!skipProcessing) {
+  // 2. Define breakpoints and target widths (based on Tailwind CSS)
+  const breakpoints = [
+    { media: "(min-width: 1024px)", name: "desktop", targetWidth: 1024 },
+    { media: "(min-width: 768px)", name: "tablet", targetWidth: 768 },
+    { media: null, name: "mobile", targetWidth: 640 }, // Default mobile fallback
+  ];
+
+  // 3. Set up file system paths
+  const publicDir = path.join(process.cwd(), "public");
+  const sourcePath = path.join(publicDir, ...normalizedSrc.split("/"));
+
+  if (!fs.existsSync(sourcePath)) {
+    throw new Error(`[Picture.astro]: Local image not found at path ${sourcePath}`);
+  }
+
+  // Extract path segments and file information
+  const lastSlashIndex = normalizedSrc.lastIndexOf("/");
+  const dirUrl = lastSlashIndex !== -1 ? normalizedSrc.substring(0, lastSlashIndex) : "";
+  const fileName = normalizedSrc.substring(lastSlashIndex + 1);
+  const nameWithoutExt = fileName.substring(0, fileName.lastIndexOf("."));
+  const originalExt = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
+  const origFormat = originalExt === "jpg" ? "jpeg" : originalExt;
+
+  // If the user has explicitly specified formats, we use them.
+  // Otherwise, we use the standard set with duplicate protection.
+  const formatsToGenerate = customFormats
+    ? [...new Set(customFormats.map((f) => (f === "jpg" ? "jpeg" : f)))]
+    : [...new Set(["avif", "webp", origFormat])];
+
+  // 4. Get original dimensions from the source file
+  const metadata = await sharp(sourcePath).metadata();
+  const metaWidth = metadata.width || 0;
+  const metaHeight = metadata.height || 0;
+
+  if (metaWidth === 0 || metaHeight === 0) {
+    throw new Error(`[Picture.astro]: Could not read dimensions for ${sourcePath}`);
+  }
+
+  // 5. Determine base dimensions based on user props or fallback to original metadata
+  let baseWidth = metaWidth;
+  let baseHeight = metaHeight;
+
+  const targetUserWidth = width ? parseInt(width.toString(), 10) : null;
+  const targetUserHeight = height ? parseInt(height.toString(), 10) : null;
+
+  // Calculate new base bounds while preventing upscaling beyond original metadata
+  if (targetUserWidth && targetUserHeight) {
+    baseWidth = Math.min(targetUserWidth, metaWidth);
+    baseHeight = Math.min(targetUserHeight, metaHeight);
+  } else if (targetUserWidth) {
+    baseWidth = Math.min(targetUserWidth, metaWidth);
+    baseHeight = Math.round((baseWidth / metaWidth) * metaHeight);
+  } else if (targetUserHeight) {
+    baseHeight = Math.min(targetUserHeight, metaHeight);
+    baseWidth = Math.round((baseHeight / metaHeight) * metaWidth);
+  }
+
+  // 6. Iterate from the largest breakpoint to the smallest
+  for (const bp of breakpoints) {
+    // Prevent upscaling beyond our calculated base dimensions
+    const w1x = Math.min(bp.targetWidth, baseWidth);
+    const w2x = Math.min(bp.targetWidth * 2, baseWidth);
+
+    // Calculate proportional heights
+    const h1x = Math.round((w1x / baseWidth) * baseHeight);
+    const h2x = Math.round((w2x / baseWidth) * baseHeight);
+
+    const bpSources = [];
+
+    for (const format of formatsToGenerate) {
+      const ext = format === "jpeg" ? "jpg" : format;
+      const mimeType = format === "jpg" ? "jpeg" : format;
+
+      const file1x = `${nameWithoutExt}-${w1x}x${h1x}.${ext}`;
+      const file2x = `${nameWithoutExt}-${w2x}x${h2x}.${ext}`;
+
+      const path1x = path.join(publicDir, ...dirUrl.split("/").filter(Boolean), file1x);
+      const path2x = path.join(publicDir, ...dirUrl.split("/").filter(Boolean), file2x);
+
+      const url1x = dirUrl ? `${dirUrl}/${file1x}` : file1x;
+      const url2x = dirUrl ? `${dirUrl}/${file2x}` : file2x;
+
+      // Track paths needed for this component to copy them later
+      localUsedFiles.push(path1x);
+      if (w2x > w1x) {
+        localUsedFiles.push(path2x);
+      }
+
+      // Ensure thread-safe generation for 1x image
+      if (!fs.existsSync(path1x)) {
+        if (!globalTasks.has(path1x)) {
+          const task = sharp(sourcePath)
+            .resize({ width: w1x, height: h1x, fit: "cover", withoutEnlargement: true })
+            .toFormat(format as keyof sharp.FormatEnum, { quality: 80 })
+            .toFile(path1x);
+          globalTasks.set(path1x, task);
+        }
+        generateTasks.push(globalTasks.get(path1x)!);
+      }
+
+      // Ensure thread-safe generation for 2x image
+      if (w2x > w1x && !fs.existsSync(path2x)) {
+        if (!globalTasks.has(path2x)) {
+          const task = sharp(sourcePath)
+            .resize({ width: w2x, height: h2x, fit: "cover", withoutEnlargement: true })
+            .toFormat(format as keyof sharp.FormatEnum, { quality: 80 })
+            .toFile(path2x);
+          globalTasks.set(path2x, task);
+        }
+        generateTasks.push(globalTasks.get(path2x)!);
+      }
+
+      const srcset = w2x > w1x ? `${url1x} 1x, ${url2x} 2x` : `${url1x} 1x`;
+
+      bpSources.push({
+        type: `image/${mimeType}`,
+        srcset,
+        width: w1x,
+        height: h1x,
+      });
+
+      // Assign fallback image details (mobile original format)
+      if (!bp.media && format === origFormat) {
+        fallbackImg = { url: url1x, width: w1x, height: h1x };
+      }
+    }
+
+    pictureSources.push({
+      media: bp.media,
+      formats: bpSources,
+    });
+  }
+
+  // 7. Wait for all generation tasks to complete safely
+  if (generateTasks.length > 0) {
+    await Promise.all(generateTasks);
+  }
+
+  // 8. Handle file copying to /dist during production build
+  if (import.meta.env.PROD) {
+    const distDir = path.join(process.cwd(), "dist");
+    const uniquePathsToCopy = [...new Set(localUsedFiles)];
+
+    for (const filePath of uniquePathsToCopy) {
+      if (fs.existsSync(filePath)) {
+        const distFilePath = filePath.replace(publicDir, distDir);
+        const distFileDir = path.dirname(distFilePath);
+
+        if (!fs.existsSync(distFilePath)) {
+          // Thread-safe copy implementation
+          const copyKey = `copy_${distFilePath}`;
+          if (!globalTasks.has(copyKey)) {
+            const task = (async () => {
+              if (!fs.existsSync(distFileDir)) {
+                await fs.promises.mkdir(distFileDir, { recursive: true }).catch(() => {});
+              }
+              await fs.promises.copyFile(filePath, distFilePath).catch(() => {});
+            })();
+            globalTasks.set(copyKey, task);
+          }
+          copyTasks.push(globalTasks.get(copyKey)!);
+        }
+      }
+    }
+
+    if (copyTasks.length > 0) {
+      await Promise.all(copyTasks);
+    }
+  }
+}
+
+// Define explicit types for format iteration to satisfy strict TS configurations
+type ImageFormat = {
+  type: string;
+  srcset: string;
+  width: number;
+  height: number;
+};
+---
+
+{
+  skipProcessing ? (
+    <img
+      src={src}
+      alt={alt}
+      width={width || undefined}
+      height={height || undefined}
+      class={className}
+      loading={loading || undefined}
+      decoding={decoding || undefined}
+    />
+  ) : (
+    <picture class={className}>
+      {pictureSources.map((bp) =>
+        bp.formats.map((fmt: ImageFormat) => (
+          <source
+            media={bp.media || undefined}
+            type={fmt.type}
+            srcset={fmt.srcset}
+            width={fmt.width}
+            height={fmt.height}
+          />
+        )),
+      )}
+
+      <img
+        src={fallbackImg.url}
+        alt={alt}
+        width={fallbackImg.width}
+        height={fallbackImg.height}
+        loading={loading || undefined}
+        decoding={decoding || undefined}
+        class={className}
+      />
+    </picture>
+  )
+}
