@@ -1,17 +1,24 @@
 <header>
   <div class="container">
-    <div class="flex items-center justify-between pt-3">
-      <div class="flex flex-col items-center gap-3 lg:flex-row">
+    <div class="flex flex-col pt-3 lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex flex-col items-center gap-4 lg:flex-row lg:gap-1.5 xl:gap-3">
         <a href="/">
-          <img src="images/logo/logo-light.svg" class="size-25 rounded-full bg-white" alt="logo" />
+          <img
+            src="images/logo/logo-light.svg"
+            class="size-30 rounded-full bg-white lg:size-22 xl:size-25"
+            alt="logo"
+          />
         </a>
         <ul class="flex flex-col items-center lg:block">
           <li class="relative inline-block">
-            <span class="relative inline-block text-2xl font-bold text-nowrap text-white lg:text-lg xl:text-3xl">
+            <span class="relative inline-block text-xl font-bold text-nowrap text-white lg:text-xl xl:text-3xl">
               Дитяча школа мистецтв №5
-              <span class="absolute top-1/2 left-1/2 z-[-1] -translate-x-[calc(50%-50px)] -translate-y-1/2">
+              <span
+                class="absolute top-1/2 left-1/2 z-[-1] -translate-x-39 -translate-y-5 lg:-translate-x-55
+                  lg:-translate-y-1/2 xl:-translate-x-[calc(50%-50px)]"
+              >
                 <svg
-                  class="lg:h-11.5 lg:w-157.5"
+                  class="h-10.5 w-90 lg:h-10.5 lg:w-115.5 xl:h-11.5 xl:w-157.5"
                   preserveAspectRatio="none"
                   viewBox="0 0 366 62.1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -24,17 +31,20 @@
               </span>
             </span>
           </li>
-          <li class="mt-1">
+          <li class="mt-3 lg:mt-1">
             <span class="text-xl font-semibold lg:text-lg xl:text-xl">Харківської міської ради</span>
           </li>
         </ul>
       </div>
-      <ul class="grid grid-cols-[auto_auto] place-items-start gap-x-7 gap-y-4 font-semibold">
+      <ul
+        class="hidden font-semibold lg:grid lg:grid-cols-[auto_auto] lg:place-items-start lg:gap-x-3 lg:gap-y-3
+          xl:gap-x-7"
+      >
         <li>
           <a href="tel:+380983763762" class="group flex w-fit items-center gap-1.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="size-6 text-rose-500 opacity-80 group-hover:opacity-100"
+              class="size-6 text-rose-500 opacity-80 group-hover:opacity-100 lg:size-5 xl:size-7"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -52,7 +62,7 @@
         <li class="flex items-center gap-1.5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="size-6 text-rose-500 opacity-80"
+            class="size-6 text-rose-500 opacity-80 lg:size-5 xl:size-7"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -71,7 +81,7 @@
           <a href="/" class="group flex items-center gap-1.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="size-6 text-rose-500 opacity-80 group-hover:opacity-100"
+              class="size-6 text-rose-500 opacity-80 group-hover:opacity-100 lg:size-5 xl:size-7"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -87,12 +97,12 @@
         </li>
         <li>
           <!-- Social Icons START -->
-          <ul class="flex items-center gap-3">
+          <ul class="flex items-center gap-2.5">
             <li>
               <a href="/" aria-label="Facebook">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 hover:opacity-70"
+                  class="h-7 w-7 hover:opacity-70 lg:h-6 lg:w-6 xl:h-7 xl:w-7"
                   fill="#7E5595"
                   viewBox="0 0 448 512"
                 >
@@ -107,7 +117,7 @@
               <a href="/" aria-label="Instagram">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 hover:opacity-70"
+                  class="h-7 w-7 hover:opacity-70 lg:h-6 lg:w-6 xl:h-7 xl:w-7"
                   fill="#7E5595"
                   viewBox="0 0 448 512"
                 >
@@ -122,7 +132,7 @@
               <a href="/" aria-label="Telegram">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 hover:opacity-70"
+                  class="h-7 w-7 hover:opacity-70 lg:h-6 lg:w-6 xl:h-7 xl:w-7"
                   fill="#7E5595"
                   viewBox="0 0 496 512"
                 >
@@ -137,7 +147,7 @@
               <a href="/" aria-label="Youtube">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 hover:opacity-70"
+                  class="h-7 w-7 hover:opacity-70 lg:h-6 lg:w-6 xl:h-7 xl:w-7"
                   fill="#7E5595"
                   viewBox="0 0 576 512"
                 >
@@ -154,12 +164,11 @@
       </ul>
     </div>
     <nav>
-      <ul class="flex items-center gap-4 text-lg">
+      <ul class="hidden lg:flex lg:items-center lg:gap-4 lg:text-lg xl:text-lg">
         <li>
           <a
             href="/"
-            class="block py-6 text-lg font-semibold whitespace-nowrap text-rose-500 transition-colors
-              hover:text-rose-700"
+            class="block py-6 font-semibold whitespace-nowrap text-rose-500 transition-colors hover:text-rose-700"
             >Головна</a
           >
         </li>
@@ -167,7 +176,7 @@
         <li class="group relative z-20">
           <a
             href="/"
-            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+            class="flex items-center py-6 font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
           >
             <span>Про школу</span>
             <svg
@@ -215,7 +224,7 @@
         <li class="group relative z-20">
           <a
             href="/"
-            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+            class="flex items-center py-6 font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
           >
             <span>Відділення</span>
             <svg
@@ -324,7 +333,7 @@
         <li class="group relative z-20">
           <a
             href="/"
-            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+            class="flex items-center py-6 font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
           >
             <span>Адміністрація</span>
             <svg
@@ -387,7 +396,7 @@
         <li class="group relative z-20">
           <a
             href="/"
-            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+            class="flex items-center py-6 font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
           >
             <span>Викладачі</span>
             <svg
@@ -487,7 +496,7 @@
         <li class="group relative z-20">
           <a
             href="/"
-            class="flex items-center py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+            class="flex items-center py-6 font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
           >
             <span>Корисна інформація</span>
             <svg
@@ -531,19 +540,16 @@
         </li>
 
         <li>
-          <a href="/" class="block py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
-            >Новини</a
+          <a href="/" class="block py-6 font-semibold whitespace-nowrap transition-colors hover:text-rose-500">Новини</a
           >
         </li>
 
         <li>
-          <a href="/" class="block py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
-            >Події</a
-          >
+          <a href="/" class="block py-6 font-semibold whitespace-nowrap transition-colors hover:text-rose-500">Події</a>
         </li>
 
         <li>
-          <a href="/" class="block py-6 text-lg font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
+          <a href="/" class="block py-6 font-semibold whitespace-nowrap transition-colors hover:text-rose-500"
             >Контакти</a
           >
         </li>
