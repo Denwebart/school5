@@ -482,7 +482,7 @@
         <!-- Center navigation items smoothly when scrolling and the logo hides -->
         <ul
           class="hidden transition-all duration-300 lg:flex lg:items-center lg:gap-4 xl:text-lg"
-          :class={`{ 'lg:w-full': isFixed }`}
+          :class={`{ 'lg:w-full lg:justify-center': isFixed }`}
         >
           <li>
             <a
@@ -877,4 +877,148 @@
       </nav>
     </div>
   </header>
+
+  <!-- MOBILE MENU FULL-SCREEN OVERLAY (Slide-over panel) START -->
+  <div
+    x-cloak
+    x-show="openMenu"
+    class="fixed inset-0 z-100 flex justify-end lg:hidden"
+    aria-labelledby="mobile-menu-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <!-- Blurred Backdrop -->
+    <div
+      x-show="openMenu"
+      x-transition:enter="ease-in-out duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-300"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      @click="openMenu = false"
+      class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity"
+    ></div>
+
+    <!-- Sliding Panel -->
+    <div
+      x-show="openMenu"
+      x-transition:enter="transform transition ease-in-out duration-300"
+      x-transition:enter-start="translate-x-full"
+      x-transition:enter-end="translate-x-0"
+      x-transition:leave="transform transition ease-in-out duration-300"
+      x-transition:leave-start="translate-x-0"
+      x-transition:leave-end="translate-x-full"
+      class="relative w-[85vw] max-w-sm bg-white h-full shadow-2xl flex flex-col pointer-events-auto"
+    >
+      <!-- Panel Header -->
+      <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 shrink-0">
+        <span class="text-xl font-bold text-rose-500" id="mobile-menu-title">Меню</span>
+        <button
+          @click="openMenu = false"
+          class="flex items-center justify-center p-2 text-gray-500 transition-colors rounded-full size-11 hover:text-rose-500 hover:bg-rose-50 active:bg-rose-100"
+          aria-label="Закрити меню"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Fully Expanded Panel Content (Scrollable) -->
+      <div class="flex-1 px-4 py-6 overflow-y-auto pb-10">
+        <ul class="space-y-4">
+          <!-- Item 1 -->
+          <li>
+            <a href="/" class="block py-2 text-xl font-bold text-gray-900 transition-colors hover:text-rose-500 active:text-rose-600">Головна</a>
+          </li>
+
+          <!-- Item 2 -->
+          <li>
+            <a href="/" class="block py-2 text-xl font-bold text-gray-900 transition-colors hover:text-rose-500 active:text-rose-600">Про школу</a>
+            <ul class="mt-2 pl-4 ml-2 space-y-1 border-l-2 border-rose-100">
+              <li><a href="/" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Історія школи</a></li>
+              <li><a href="/" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Проєктна діяльність</a></li>
+              <li><a href="/" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Символіка школи</a></li>
+              <li><a href="gallery.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Галерея</a></li>
+            </ul>
+          </li>
+
+          <!-- Item 3 -->
+          <li>
+            <a href="/" class="block py-2 text-xl font-bold text-gray-900 transition-colors hover:text-rose-500 active:text-rose-600">Відділення</a>
+            <ul class="mt-2 pl-4 ml-2 space-y-1 border-l-2 border-rose-100">
+              <li>
+                <a href="music-department.html" class="block py-2.5 px-3 text-lg font-bold text-gray-800 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Музичне відділення</a>
+                <ul class="mt-1 pl-4 ml-4 space-y-1 border-l-2 border-gray-100">
+                  <li><a href="piano-violin-department.html" class="block py-2 px-3 text-base font-medium text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-rose-600 active:bg-rose-50">Фортепіанно-струнний відділ</a></li>
+                  <li><a href="folk-spiritual-department.html" class="block py-2 px-3 text-base font-medium text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-rose-600 active:bg-rose-50">Народно-духовий відділ</a></li>
+                  <li><a href="vocal-choral-department.html" class="block py-2 px-3 text-base font-medium text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-rose-600 active:bg-rose-50">Вокально-хоровий відділ</a></li>
+                  <li><a href="music-theory-department.html" class="block py-2 px-3 text-base font-medium text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-rose-600 active:bg-rose-50">Музично-теоретичний відділ</a></li>
+                </ul>
+              </li>
+              <li><a href="painting-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Художнє відділення</a></li>
+              <li><a href="theater-choreography-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Театрально-хореографічне відділення</a></li>
+              <li><a href="additional-services-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Додаткові освітні платні послуги</a></li>
+              <li><a href="inclusion-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Інклюзивна початкова мистецька освіта</a></li>
+              <li><a href="psychology-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Психолог</a></li>
+              <li><a href="online-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Дистанційне відділення</a></li>
+              <li><a href="library-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Бібліотека</a></li>
+            </ul>
+          </li>
+
+          <!-- Item 4 -->
+          <li>
+            <a href="/" class="block py-2 text-xl font-bold text-gray-900 transition-colors hover:text-rose-500 active:text-rose-600">Адміністрація</a>
+            <ul class="mt-2 pl-4 ml-2 space-y-1 border-l-2 border-rose-100">
+              <li><a href="music-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Кравчук Оксана Вікторівна</a></li>
+              <li><a href="painting-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Новікова Тетяна Сергіївна</a></li>
+              <li><a href="theater-choreography-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Вініченко Марина Володимирівна</a></li>
+              <li><a href="additional-services-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Шугай Алевтина Олександрівна</a></li>
+              <li><a href="inclusion-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Бубнова Олена Володимирівна</a></li>
+            </ul>
+          </li>
+
+          <!-- Item 5 -->
+          <li>
+            <a href="/" class="block py-2 text-xl font-bold text-gray-900 transition-colors hover:text-rose-500 active:text-rose-600">Викладачі</a>
+            <ul class="mt-2 pl-4 ml-2 space-y-1 border-l-2 border-rose-100">
+              <li>
+                <a href="music-department.html" class="block py-2.5 px-3 text-lg font-bold text-gray-800 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Музичне відділення</a>
+                <ul class="mt-1 pl-4 ml-4 space-y-1 border-l-2 border-gray-100">
+                  <li><a href="piano-violin-department.html" class="block py-2 px-3 text-base font-medium text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-rose-600 active:bg-rose-50">Фортепіанно-струнний відділ</a></li>
+                  <li><a href="folk-spiritual-department.html" class="block py-2 px-3 text-base font-medium text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-rose-600 active:bg-rose-50">Народно-духовий відділ</a></li>
+                  <li><a href="vocal-choral-department.html" class="block py-2 px-3 text-base font-medium text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-rose-600 active:bg-rose-50">Вокально-хоровий відділ</a></li>
+                  <li><a href="music-theory-department.html" class="block py-2 px-3 text-base font-medium text-gray-600 rounded-lg transition-colors hover:bg-gray-50 hover:text-rose-600 active:bg-rose-50">Музично-теоретичний відділ</a></li>
+                </ul>
+              </li>
+              <li><a href="painting-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Художнє відділення</a></li>
+              <li><a href="theater-choreography-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Театральний клас</a></li>
+              <li><a href="additional-services-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Хореографічний клас</a></li>
+              <li><a href="inclusion-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Інклюзивна початкова мистецька освіта</a></li>
+              <li><a href="psychology-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Психолог</a></li>
+              <li><a href="library-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Бібліотека</a></li>
+            </ul>
+          </li>
+
+          <!-- Item 6 -->
+          <li>
+            <a href="/" class="block py-2 text-xl font-bold text-gray-900 transition-colors hover:text-rose-500 active:text-rose-600">Корисна інформація</a>
+            <ul class="mt-2 pl-4 ml-2 space-y-1 border-l-2 border-rose-100">
+              <li><a href="music-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Викладачам</a></li>
+              <li><a href="painting-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Батькам</a></li>
+              <li><a href="theater-choreography-department.html" class="block py-2.5 px-3 text-lg font-semibold text-gray-700 rounded-lg transition-colors hover:bg-rose-50 hover:text-rose-600 active:bg-rose-100">Нормативна база</a></li>
+            </ul>
+          </li>
+
+          <!-- Remaining Root Items -->
+          <li><a href="/" class="block py-2 text-xl font-bold text-gray-900 transition-colors hover:text-rose-500 active:text-rose-600">Новини</a></li>
+          <li><a href="/" class="block py-2 text-xl font-bold text-gray-900 transition-colors hover:text-rose-500 active:text-rose-600">Події</a></li>
+          <li><a href="/" class="block py-2 text-xl font-bold text-gray-900 transition-colors hover:text-rose-500 active:text-rose-600">Контакти</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- MOBILE MENU FULL-SCREEN OVERLAY END -->
+
 </div>
